@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-page",
+  "version": "1.0.0",
+  "description": "Raphael Ugwu's Portfolio Page",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "markdown-folder-to-html": "^2.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm run test",
+    "docs": "markdown-folder-to-html"
+  },
+  "author": "Raphael Ugwu",
+  "license": "ISC"
+}
