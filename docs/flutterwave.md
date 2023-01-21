@@ -1,6 +1,6 @@
 # Flutterwave
 
-I joined Flutterwave as a Developer Advocate in July 2019. I was immediately tasked with improving relations with the developer community and creating relatable content via blog posts using web/mobile frameworks and Flutterwave's REST APIs.
+I joined Flutterwave as a Developer Advocate in July 2019. I was tasked with improving relations with the developer community and creating relatable content via blog posts using web/mobile frameworks and Flutterwave's REST APIs.
 
 <br>
 
