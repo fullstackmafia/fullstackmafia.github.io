@@ -20,6 +20,7 @@ Hello, welcome to my portfolio page. You can check out my [skills](./skills.md),
 
 ### Flutterwave
 - I reduced the time developers took to learn Flutterwave's APIs by building open source projects and writing tutorials about how to create them from scratch.
+- I sped up the time developers took to adopt Flutterwave's APIs in their startups. This was done by organising a hackathon in collaboration with Andela, Microsoft, and GitHub.
 - I increased transaction volume for a tier one customer by proposing and leading the integration of a new payment method which was more aligned to their use cases.
 - I provided an alternative payment method on Flutterwave's modal by integrating a mobile payment platform to increase payment options for end users.
 - I lessened the friction during handovers in the Technical Account Management team by creating knowledge bases that covered the team's standard operating procedures.
