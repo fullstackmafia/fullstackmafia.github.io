@@ -9,4 +9,4 @@ I prefer to portray my work history in a narrative style as this provides contex
 
 <br>
 
-I find resumes unimaginative, but you can download mine in PDF format [here](https://drive.google.com/file/d/1cZmQkXAUjZdC_-8MUGgUW0FKKOml7bnV/view?usp=sharing) if you need it for record keeping purposes.
+I find resumes unimaginative, but you can download mine in PDF format [here](https://drive.google.com/file/d/1glHpzVh_kOV6svikzlD9dGGyW30WAqrL/view?usp=sharing) if you need it for record keeping purposes.
