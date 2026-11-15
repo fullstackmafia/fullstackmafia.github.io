@@ -1,23 +1,30 @@
-# About
+# raphaelugwu portfolio
 
-I'm Raphael. I have been working as a Web Developer Advocate since 2017. I love working with developer-focused docs and creating API references, quick starts, how-to guides, and tutorials for developers.
+Portfolio site for Raphael Ugwu, senior technical writer. Built with [Astro](https://astro.build) as a static site.
 
-I also thrive in environments where I can collaborate with engineering, product, and customer success teams to ensure that a product's entire documentation suite is top-notch and evergreen. I love tinkering with API doctools and cleaning up outdated doc sets.
+## Run it locally
 
-<br>
+Requires Node 22.
 
-## My Ideal Work Environment
+```bash
+npm install
+npm run dev      # local server with live reload
+npm run build    # static output in dist/
+```
 
-**Short version**: Have me own a product or process and trust me to get my work done. Communicate proactively with me (I'll always reach out first) and let me know when I'm doing awesome or need to improve. Give me room to advocate for end-user developers and solve their pain points.
+## Where the content lives
 
-**Long version**: I do my best work in organisations where I am trusted to get the job done in the most efficient way. I prefer a hands-off management style. My manager should not be someone who seeks to micromanage my tasks but a person who works on the broader roadmap with me, communicates feedback, and provides constructive criticism.
+| What | File |
+| --- | --- |
+| Experience timeline, writing links, skills, contact links | `src/data/site.js` |
+| Case studies (one Markdown file each) | `src/content/work/` |
+| Home page | `src/pages/index.astro` |
+| About page | `src/pages/about.astro` |
+| Colours, type, layout | `src/styles/global.css` |
 
-I appreciate an organisation where frequent, two-way communication is the norm. I like to have a healthy amount of ownership over my work and product area. I also don't mind taking on few tasks that are not related to my core job description but help the overall mission of the organisation.
+To add a case study, add a Markdown file to `src/content/work/` with the same front matter as the existing ones. It gets its own page at `/work/<file-name>/` and a row on the home page.
 
-<br>
+## Deploying
 
-### Reach out
-
-- [LinkedIn](https://www.linkedin.com/in/raphaelugwu/)
-- [GitHub](https://github.com/fullstackmafia)
-- [Email](mailto:ugwuaphael@gmail.com)
+- **Netlify:** `netlify.toml` sets the build command and publish folder, so no dashboard changes are needed.
+- **GitHub Pages:** `.github/workflows/deploy.yml` builds and publishes on every push to `main`. In the repository settings, set Pages > Source to "GitHub Actions".

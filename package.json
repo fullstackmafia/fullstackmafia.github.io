@@ -1,19 +1,19 @@
 {
-  "name": "portfolio-page",
-  "version": "1.0.0",
-  "description": "Raphael Ugwu's Portfolio Page",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "dependencies": {
-    "markdown-folder-to-html": "^2.4.0"
-  },
-  "devDependencies": {},
+  "name": "raphaelugwu-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Raphael Ugwu's portfolio site",
   "scripts": {
-    "test": "npm run test",
-    "docs": "markdown-folder-to-html"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "author": "Raphael Ugwu",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
+    "astro": "^7.4.12"
+  }
 }

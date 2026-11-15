@@ -1,0 +1,183 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { person, experience, docs, writing, workshops, skills } from '../data/site.js';
+
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+
+// Diagram geometry: four sources on the left converge on one site on the right.
+const sources = [
+  { name: 'RoboHelp', what: 'Console guides' },
+  { name: 'Postman', what: 'API reference' },
+  { name: 'Confluence', what: 'Feeds, release notes' },
+  { name: 'SharePoint', what: 'Feeds, release notes' },
+];
+const rowH = 58;
+const gap = 14;
+const srcW = 190;
+const destX = 300;
+const totalH = sources.length * rowH + (sources.length - 1) * gap;
+const midY = totalH / 2;
+---
+
+<Base>
+  <section class="hero">
+    <div>
+      <h1>I turn scattered product knowledge into documentation developers can use.</h1>
+      <p class="hero-lede">
+        I'm Raphael, a senior technical writer in Toronto. Since 2017 I've written API references, developer guides
+        and release notes for Exchange Solutions, Instacart, Reloadly and Flutterwave.
+      </p>
+    </div>
+    <figure class="merge">
+      <svg
+        viewBox={`0 0 480 ${totalH}`}
+        role="img"
+        aria-label="Diagram: RoboHelp, Postman, Confluence and SharePoint feeding into one Docusaurus site"
+      >
+        {
+          sources.map((s, i) => {
+            const y = i * (rowH + gap);
+            const cy = y + rowH / 2;
+            return (
+              <>
+                <path class="flow" d={`M ${srcW} ${cy} C ${srcW + 60} ${cy}, ${destX - 60} ${midY}, ${destX} ${midY}`} />
+              </>
+            );
+          })
+        }
+        {
+          sources.map((s, i) => {
+            const y = i * (rowH + gap);
+            return (
+              <g>
+                <rect class="src" x="0.5" y={y + 0.5} width={srcW - 1} height={rowH - 1} rx="4" />
+                <text x="14" y={y + 25} font-size="16" font-weight="650" fill="#15201c">{s.name}</text>
+                <text x="14" y={y + 44} font-size="13" fill="#52605a">{s.what}</text>
+              </g>
+            );
+          })
+        }
+        <rect class="dest" x={destX} y={midY - 62} width={480 - destX} height="124" rx="4"></rect>
+        <text x={destX + 18} y={midY - 14} font-size="21" font-weight="700" fill="#f2f5f3">One docs site</text>
+        <text x={destX + 18} y={midY + 12} font-size="13.5" fill="#c5d0ca">Docusaurus, in Git,</text>
+        <text x={destX + 18} y={midY + 31} font-size="13.5" fill="#c5d0ca">maintained as code</text>
+      </svg>
+      <figcaption>
+        Exchange Solutions, 2026. As the only writer, I unified four documentation sources into one site.{' '}
+        <a href="/work/exchange-solutions/">Read the case study</a>.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="section" id="work">
+    <h2>Work</h2>
+    <ul class="rows">
+      {
+        work.map((entry) => (
+          <li>
+            <a class="row-title" href={`/work/${entry.id}/`}>{entry.data.company}</a>
+            <p class="row-meta">
+              {entry.data.role}, {entry.data.dates}
+            </p>
+            <p class="row-note">{entry.data.summary}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h3>Documentation you can open</h3>
+    <ul class="rows compact">
+      {
+        docs.map((item) => (
+          <li>
+            <a class="row-title" href={item.url}>{item.title}</a>
+            <p class="row-note">{item.note}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section" id="experience">
+    <h2>Experience</h2>
+    <ol class="timeline">
+      {
+        experience.map((job) => (
+          <li>
+            <p class="timeline-dates">{job.dates}</p>
+            <div>
+              <p class="timeline-company">
+                {job.slug ? <a href={`/work/${job.slug}/`}>{job.company}</a> : job.company}
+              </p>
+              <p class="timeline-role">
+                {job.role}, {job.location}
+              </p>
+              <p class="timeline-note">{job.note}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="education">
+      B.Eng in Electrical Engineering, Caritas University, Enugu, Nigeria (2010 to 2015).
+    </p>
+  </section>
+
+  <section class="section" id="writing">
+    <h2>Writing</h2>
+    <ul class="rows compact">
+      {
+        writing.map((item) => (
+          <li>
+            <a class="row-title" href={item.url}>{item.title}</a>
+            <p class="row-meta">{item.where}</p>
+            {item.note && <p class="row-note">{item.note}</p>}
+          </li>
+        ))
+      }
+    </ul>
+
+    <h3>Workshops</h3>
+    <ul class="rows compact">
+      {
+        workshops.map((item) => (
+          <li>
+            <a class="row-title" href={item.url}>{item.title}</a>
+            <p class="row-meta">Reloadly, on YouTube</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section" id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      {
+        skills.map((s) => (
+          <div>
+            <dt>{s.group}</dt>
+            <dd>{s.items}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="section contact" id="contact">
+    <h2>Contact</h2>
+    <p>The quickest way to reach me is email.</p>
+    <p><a class="contact-email" href={`mailto:${person.email}`}>{person.email}</a></p>
+    <p>
+      I'm also on {
+        person.links.map((link, i) => (
+          <>
+            {i > 0 && ' and '}
+            <a href={link.url}>{link.label}</a>
+          </>
+        ))
+      }.
+    </p>
+  </section>
+</Base>
