@@ -1,0 +1,77 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/source-serif-4/standard-italic.css';
+import '../styles/global.css';
+import { person } from '../data/site.js';
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: 'home' | 'work' | 'about';
+}
+
+const {
+  title,
+  description = 'Raphael Ugwu is a senior technical writer in Toronto who builds API references, developer guides and docs-as-code sites.',
+  current = 'home',
+} = Astro.props;
+
+const pageTitle = title ? `${title} | ${person.name}` : `${person.name}, senior technical writer`;
+
+const nav = [
+  { label: 'Work', href: '/#work', key: 'work' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Writing', href: '/#writing' },
+  { label: 'Skills', href: '/#skills' },
+  { label: 'About', href: '/about/', key: 'about' },
+  { label: 'Contact', href: '/#contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="shell">
+      <header class="sidebar">
+        <a class="sidebar-name" href="/">{person.name}</a>
+        <p class="sidebar-role">{person.role}, {person.location}</p>
+        <nav aria-label="Main">
+          <ul>
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={item.key && item.key === current ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <ul class="sidebar-contact">
+          <li><a href={`mailto:${person.email}`}>Email</a></li>
+          {person.links.map((link) => <li><a href={link.url}>{link.label}</a></li>)}
+        </ul>
+      </header>
+      <main class="content" id="main">
+        <slot />
+        <footer class="footer">
+          <p>{person.name}, {new Date().getFullYear()}. Built with Astro.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

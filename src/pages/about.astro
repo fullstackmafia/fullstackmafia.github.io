@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import { person } from '../data/site.js';
+---
+
+<Base
+  title="About"
+  description="How Raphael Ugwu works: developer-focused documentation, docs-as-code, and close collaboration with engineering and product."
+  current="about"
+>
+  <article>
+    <header class="article-header">
+      <h1>About</h1>
+      <p class="article-summary">
+        I'm Raphael. I've been writing for developers since 2017, first as a developer advocate in Lagos and now as a
+        senior technical writer in Toronto.
+      </p>
+    </header>
+    <div class="prose">
+      <p>
+        I love working on developer-focused docs: API references, quick starts, how-to guides, and tutorials. I
+        trained as an electrical engineer and I write JavaScript and Python, so I read the code to confirm how a
+        feature behaves before I describe it.
+      </p>
+      <p>
+        I do my best work alongside engineering, product, and customer success teams, keeping a product's whole
+        documentation set accurate and current. I enjoy tinkering with API doc tools and cleaning up outdated doc
+        sets. Lately that means building AI-assisted workflows that let one writer cover what used to need a team.
+      </p>
+
+      <h2>My ideal work environment</h2>
+      <p>
+        <strong>Short version.</strong> Have me own a product or process and trust me to get the work done.
+        Communicate proactively with me (I'll always reach out first) and tell me when I'm doing well or need to
+        improve. Give me room to advocate for the developers who use the product and to solve their pain points.
+      </p>
+      <p>
+        <strong>Long version.</strong> I do my best work in organisations where I'm trusted to get the job done in
+        the most efficient way. I prefer a hands-off management style: a manager who works on the broader roadmap
+        with me, shares feedback, and gives constructive criticism.
+      </p>
+      <p>
+        I appreciate organisations where frequent, two-way communication is the norm. I like a healthy amount of
+        ownership over my work and product area, and I don't mind taking on tasks outside my core job description
+        when they help the organisation's mission.
+      </p>
+
+      <h2>What colleagues get from me</h2>
+      <ul>
+        <li>
+          A bridge between engineering, design, product, marketing, and support. I'm good at getting colleagues to
+          see things from the developer's perspective.
+        </li>
+        <li>Someone who thrives in a remote, asynchronous environment.</li>
+        <li>Experience managing open source documentation content and its contributors.</li>
+        <li>Experience running online developer communities and supporting the developers in them.</li>
+        <li>A steady hand on projects like documentation updates and migrations.</li>
+      </ul>
+
+      <h2>Reach out</h2>
+      <p>
+        Email me at <a href={`mailto:${person.email}`}>{person.email}</a>, or find me on {
+          person.links.map((link, i) => (
+            <>
+              {i > 0 && ' and '}
+              <a href={link.url}>{link.label}</a>
+            </>
+          ))
+        }.
+      </p>
+    </div>
+  </article>
+</Base>
